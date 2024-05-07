@@ -1293,7 +1293,11 @@ export var ExtensionContent = {
  */
 export class ExtensionContentChild extends JSProcessActorChild {
   receiveMessage({ name, data }) {
-    if (!lazy.isContentScriptProcess) {
+    console.log(`ext-ExtensionContent.jsm receiveMessage ${name} ${data}`);
+    if (!isContentScriptProcess) {
+      console.log(
+        `ext-ExtensionContent.jsm receiveMessage not a content script process!`
+      );
       return;
     }
     switch (name) {
