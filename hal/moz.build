@@ -113,6 +113,7 @@ elif CONFIG["OS_TARGET"] == "Linux":
         "fallback/FallbackSensor.cpp",
         "fallback/FallbackUsbManager.cpp",
         "linux/LinuxMemory.cpp",
+        "linux/LinuxProcessPriority.cpp",
         "linux/LinuxVibration.cpp",
     ]
     if CONFIG["MOZ_ENABLE_DBUS"]:
