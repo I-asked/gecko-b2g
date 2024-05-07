@@ -966,10 +966,7 @@ const nsTArray<GfxDriverInfo>& GfxInfo::GetGfxDriverInfo() {
         V(21, 0, 0, 0), "FEATURE_FAILURE_WEBRENDER_BUG_1635186",
         "Mesa 21.0.0.0");
 
-    ////////////////////////////////////
-    // FEATURE_WEBRENDER - ALLOWLIST
-
-#if defined(EARLY_BETA_OR_EARLIER) || defined(MOZ_B2G)
+    // Bug 1815481 - Disable mesa drivers in virtual machines.
     APPEND_TO_DRIVER_BLOCKLIST_EXT(
         OperatingSystem::Linux, ScreenSizeStatus::All, BatteryStatus::All,
         WindowProtocol::All, DriverVendor::MesaVM, DeviceFamily::All,
