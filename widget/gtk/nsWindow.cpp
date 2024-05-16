@@ -6249,8 +6249,6 @@ nsresult nsWindow::Create(nsIWidget* aParent, nsNativeWidget aNativeParent,
     } else {
       LOG("  set kiosk mode");
     }
-    // Kiosk mode always use fullscreen.
-    MakeFullScreen(/* aFullScreen */ true);
   }
 
   if (mWindowType == WindowType::Popup) {
@@ -7538,18 +7536,8 @@ nsresult nsWindow::MakeFullScreen(bool aFullScreen) {
         ApplySizeConstraints();
       }
     }
-
-    if (mKioskMonitor.isSome()) {
-      KioskLockOnMonitor();
-    } else {
-      gtk_window_fullscreen(GTK_WINDOW(mShell));
-    }
   } else {
     // Kiosk mode always use fullscreen mode.
-    if (gKioskMode) {
-      return NS_ERROR_NOT_AVAILABLE;
-    }
-
     gtk_window_unfullscreen(GTK_WINDOW(mShell));
 
     if (mIsPIPWindow) {
